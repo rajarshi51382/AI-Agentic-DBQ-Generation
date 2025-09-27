@@ -1,0 +1,39 @@
+{
+  "documents": [
+    {
+      "title": "Report of the Woman's Rights Convention, held at Seneca Falls",
+      "url": "https://www.loc.gov/item/rbcmiller001106/",
+      "type": "text",
+      "time_period": "1848-1920",
+      "topic": "women_suffrage"
+    },
+    {
+      "title": "Petition for universal suffrage",
+      "url": "https://www.loc.gov/resource/rbpe.20801500/",
+      "type": "text",
+      "time_period": "1848-1920",
+      "topic": "women_suffrage"
+    },
+    {
+      "title": "Official program, Woman Suffrage procession",
+      "url": "https://www.loc.gov/item/rbpe.20801700/",
+      "type": "image",
+      "time_period": "1848-1920",
+      "topic": "women_suffrage"
+    },
+    {
+      "title": "A Squelcher for Woman Suffrage",
+      "url": "https://www.loc.gov/resource/rbpe.20801600/",
+      "type": "text",
+      "time_period": "1848-1920",
+      "topic": "women_suffrage"
+    },
+    {
+      "title": "Photograph of a suffrage parade",
+      "url": "https://www.loc.gov/item/2012645535/",
+      "type": "image",
+      "time_period": "1848-1920",
+      "topic": "women_suffrage"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Essay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Submit Your Essay</h1>
+        <form id="essay-form" action="/submit_essay" method="post">
+            <textarea name="essay" rows="20" placeholder="Paste your essay here..."></textarea>
+            <button type="submit" class="btn">Get Feedback</button>
+        </form>
+        <div id="loading" style="display: none;">
+            <p>Grading your essay...</p>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="btn">Back to Home</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('essay-form').addEventListener('submit', function() {
+            document.getElementById('loading').style.display = 'block';
+            document.querySelector('button[type="submit"]').disabled = true;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated DBQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="no-print">Generate a DBQ</h1>
+        <form action="/generate_dbq" method="post" onsubmit="showSearching(event)">
+            <label for="question">Enter your DBQ question:</label>
+            <textarea name="question" id="question" rows="4" cols="50">Evaluate the extent to which British colonization affected colonial life in the Americas in the 1700s</textarea>
+            <button type="submit" class="btn no-print">Generate DBQ</button>
+        </form>
+
+        <div id="searching-container" style="display: none;">
+            <div id="searching-animation">
+                <div class="spinner"></div>
+                <span id="searching-text">Searching for sources...</span>
+            </div>
+        </div>
+
+        <div id="dbq-container">
+            <!-- DBQ content will be injected here -->
+        </div>
+
+        <div class="nav-links no-print">
+            <a href="/" class="btn">Back to Home</a>
+            <a href="/submit_essay" class="btn">Submit an Essay</a>
+        </div>
+    </div>
+
+    <script>
+        function showSearching(event) {
+            event.preventDefault();
+            document.getElementById('searching-container').style.display = 'block';
+            const question = document.getElementById('question').value;
+
+            const searchStatusInterval = setInterval(() => {
+                fetch('/search_status')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('searching-text').innerText = `Searching (currently on Source ${data.current_source} of ${data.total_sources})`;
+                        if (data.current_source === data.total_sources) {
+                            clearInterval(searchStatusInterval);
+                        }
+                    });
+            }, 1000);
+
+            fetch('/generate_dbq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `question=${encodeURIComponent(question)}`
+            })
+            .then(response => response.json())
+            .then(dbq_data => {
+                document.getElementById('searching-container').style.display = 'none';
+                const dbqContainer = document.getElementById('dbq-container');
+                let dbqHtml = `
+                    <div id="dbq-to-print">
+                        <div class="dbq-question">
+                            <h2>Question:</h2>
+                            <p>${question}</p>
+                        </div>
+                        <div class="dbq-documents">
+                            <h2>Documents:</h2>
+                `;
+                dbq_data.forEach(doc => {
+                    dbqHtml += `
+                        <div class="document">
+                            <h3>${doc.title}</h3>
+                            <p><strong>Source:</strong> <a href="${doc.url}" target="_blank">${doc.url}</a></p>
+                            ${doc.type === 'image' ? `<img src="${doc.url}" alt="${doc.title}" style="max-width: 500px;">` : `<p>${doc.content}</p>`}
+                        </div>
+                    `;
+                });
+                dbqHtml += `
+                        </div>
+                    </div>
+                    <button onclick="window.print()" class="btn no-print">Print DBQ</button>
+                `;
+                dbqContainer.innerHTML = dbqHtml;
+            });
+        }
+    </script>
+</body>
+</html>

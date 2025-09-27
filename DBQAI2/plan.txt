@@ -1,0 +1,8 @@
+1. **User Input**: The user provides a historical question for the DBQ.
+2. **Source Brainstorming**: The user's question is fed to a large language model (LLM) like Gemini to generate a list of potential primary source documents.
+3. **Source Retrieval**:
+    - The application uses Google Search and the Library of Congress API to find the brainstormed primary sources.
+    - The search results are processed to extract relevant documents.
+4. **Source Display**: The retrieved sources are presented to the user in a clear and organized format on the webpage.
+5. **DBQ Generation**: The user can then select the sources they want to include in the DBQ.
+6. **Print/Export**: The final DBQ with the selected sources can be printed or exported.
