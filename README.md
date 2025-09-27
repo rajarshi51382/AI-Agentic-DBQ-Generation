@@ -2,10 +2,6 @@
 
 DBQ AI Grader is a powerful web application built with Flask and powered by Google's Gemini AI. It's designed to revolutionize the way students and teachers approach Document-Based Questions (DBQs). This tool not only generates dynamic DBQs from a curated set of historical sources but also provides instant, AI-driven grading and feedback on student essays.
 
-## Live Demo
-
-*[Link to a live demo of the application would go here. You can host this on platforms like PythonAnywhere, Heroku, or a cloud provider.]*
-
 ## Features
 
 *   **Dynamic DBQ Generation**: Creates unique Document-Based Questions using a predefined set of historical sources. The application simulates a search for sources, providing a more engaging user experience.
