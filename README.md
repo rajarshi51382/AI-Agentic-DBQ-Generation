@@ -21,8 +21,9 @@ DBQ AI Grader is a powerful web application built with Flask and powered by Goog
 
 *   **Backend**: Flask
 *   **Frontend**: HTML, CSS, JavaScript
-*   **AI Model**: Google Gemini 2.5 Flash
+*   **AI Model**: Google Gemini 2.5 Flash OR OpenAI GPT-4
 *   **Python Libraries**:
+    *   `openai`
     *   `flask`
     *   `google-generativeai`
     *   `googlesearch-python`
